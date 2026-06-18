@@ -38,6 +38,26 @@ body {
   height: 16px;
 }
 
+/* Branded repeating pattern divider for light backgrounds */
+.zulu-pattern-divider {
+  position: relative;
+}
+
+.zulu-pattern-divider::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/pattern.png');
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 28px;
+  /* Convert light pattern to brand dark green (#0D4B3E) */
+  filter: invert(24%) sepia(21%) saturate(1915%) hue-rotate(126deg) brightness(95%) contrast(92%);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+
 /* Section transition helper */
 .section-clip {
   clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);

@@ -143,7 +143,7 @@ export default function Home() {
       </section>
 
       {/* Zulu Pattern Divider */}
-      <div className="w-full h-12 bg-green-950 bg-[url('/images/pattern.png')] bg-repeat-x bg-center bg-[length:auto_28px] relative z-10" />
+      <div className="w-full h-12 bg-cream-50 zulu-pattern-divider relative z-10" />
 
       {/* ─── TWO PATHWAYS ─── */}
       <section className="bg-cream-50 py-24">
