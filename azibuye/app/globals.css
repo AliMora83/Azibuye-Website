@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-green-950: #061f18;
+  --color-green-900: #0a3328;
+  --color-green-800: #0D4B3E;
+  --color-green-700: #115f4f;
+  --color-green-600: #157362;
+  --color-gold-400: #d9a843;
+  --color-gold-500: #C8922B;
+  --color-gold-600: #a87520;
+  --color-cream-50: #FAF8F3;
+  --color-cream-100: #F5F7F6;
+  --font-sans: var(--font-montserrat), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FAF8F3;
+  color: #222222;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Zulu geometric border used throughout branding */
+.zulu-border {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='16' viewBox='0 0 60 16'%3E%3Cpath d='M0 8 L6 2 L12 8 L6 14 Z M12 8 L18 2 L24 8 L18 14 Z M24 8 L30 2 L36 8 L30 14 Z M36 8 L42 2 L48 8 L42 14 Z M48 8 L54 2 L60 8 L54 14 Z' fill='none' stroke='%23C8922B' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  height: 16px;
+}
+
+.zulu-border-green {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='16' viewBox='0 0 60 16'%3E%3Cpath d='M0 8 L6 2 L12 8 L6 14 Z M12 8 L18 2 L24 8 L18 14 Z M24 8 L30 2 L36 8 L30 14 Z M36 8 L42 2 L48 8 L42 14 Z M48 8 L54 2 L60 8 L54 14 Z' fill='none' stroke='%230D4B3E' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  height: 16px;
+}
+
+/* Section transition helper */
+.section-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+
+.section-clip-reverse {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+}
