@@ -6,10 +6,10 @@ import SectionReveal from '@/components/SectionReveal'
 import emailjs from '@emailjs/browser'
 
 // ─── Replace these with your real EmailJS credentials ───
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID'
-const EMAILJS_ENROL_TID   = 'YOUR_ENROL_TEMPLATE_ID'
-const EMAILJS_PARTNER_TID = 'YOUR_PARTNER_TEMPLATE_ID'
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY'
+const EMAILJS_SERVICE_ID  = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID'
+const EMAILJS_ENROL_TID   = process.env.NEXT_PUBLIC_EMAILJS_ENROL_TEMPLATE_ID || 'YOUR_ENROL_TEMPLATE_ID'
+const EMAILJS_PARTNER_TID = process.env.NEXT_PUBLIC_EMAILJS_PARTNER_TEMPLATE_ID || 'YOUR_PARTNER_TEMPLATE_ID'
+const EMAILJS_PUBLIC_KEY  = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
 // ────────────────────────────────────────────────────────
 
 const programmes = [
@@ -228,7 +228,7 @@ export default function ContactPage() {
               <div className="mt-8 rounded-2xl overflow-hidden border border-gray-100">
                 <iframe
                   title="Azibuye Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3469.1!2d30.5!3d-30.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDI4JzQ4LjAiUyAzMMKwMjUnMzYuMCJF!5e0!3m2!1sen!2sza!4v1234567890"
+                  src="https://maps.google.com/maps?q=169%20Lilly%20Road,%20Umzinto,%20South%20Africa&t=&z=15&ie=UTF8&iwloc=&output=embed"
                   width="100%" height="220" style={{ border: 0 }} allowFullScreen loading="lazy"
                 />
               </div>
