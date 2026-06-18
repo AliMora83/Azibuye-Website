@@ -78,14 +78,13 @@ export default function AboutPage() {
       <section className="bg-cream-50 py-24">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <SectionReveal>
-            <div className="bg-green-800 rounded-3xl p-10 relative overflow-hidden">
-              <span className="text-gold-400 text-8xl font-serif leading-none absolute top-6 left-6 opacity-30">"</span>
-              <p className="text-white text-2xl font-bold leading-snug relative z-10 mt-6">
-                Come back, reclaim what is yours.
+            <div className="relative w-full aspect-square bg-[url('/images/box.png')] bg-cover bg-center rounded-3xl p-8 md:p-12 flex flex-col justify-center text-left overflow-hidden shadow-md">
+              <span className="text-gold-400 text-7xl md:text-8xl font-serif leading-none mb-2 block select-none">“</span>
+              <p className="text-white text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+                Come back,<br />
+                reclaim what<br />
+                is yours.
               </p>
-              <div className="mt-6 pt-6 border-t border-green-700">
-                <p className="text-green-300 text-sm">The meaning behind our name</p>
-              </div>
             </div>
           </SectionReveal>
           <SectionReveal delay={0.15}>
