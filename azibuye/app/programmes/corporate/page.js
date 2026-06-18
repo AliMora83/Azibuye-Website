@@ -44,7 +44,7 @@ export default function CorporatePage() {
     <>
       <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/corporate-bg.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src="/images/corporate-bg.png" alt="" className="w-full h-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-b from-green-950/80 to-green-950" />
         </div>
         <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
@@ -72,7 +72,7 @@ export default function CorporatePage() {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <SectionReveal>
             <div className="rounded-3xl overflow-hidden aspect-video bg-gray-100">
-              <img src="/images/corporate-class.jpg" alt="Corporate Training" className="w-full h-full object-cover" />
+              <img src="/images/corporate-class.png" alt="Corporate Training" className="w-full h-full object-cover" />
             </div>
           </SectionReveal>
           <SectionReveal delay={0.15}>

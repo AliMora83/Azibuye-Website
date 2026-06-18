@@ -56,7 +56,7 @@ export default function AboutPage() {
       {/* PAGE HERO */}
       <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/about-bg.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src="/images/about-bg.png" alt="" className="w-full h-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-b from-green-950/80 to-green-950" />
         </div>
         <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
@@ -128,7 +128,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <SectionReveal>
               <div className="rounded-3xl overflow-hidden bg-gray-100 aspect-[4/5]">
-                <img src="/images/founder.jpg" alt="Dr Maseru Mkhwane" className="w-full h-full object-cover" />
+                <img src="/images/dr-maseru.png" alt="Dr Maseru Mkhwane" className="w-full h-full object-cover" />
               </div>
             </SectionReveal>
             <div>

@@ -81,7 +81,7 @@ export default function Home() {
         {/* Parallax background */}
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
           <img
-            src="/images/hero-bg.jpg"
+            src="/images/hero-bg.png"
             alt=""
             className="w-full h-full object-cover opacity-30"
           />

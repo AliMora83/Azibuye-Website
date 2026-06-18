@@ -9,7 +9,7 @@ export default function ProgrammesPage() {
     <>
       <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/images/programmes-bg.jpg" alt="" className="w-full h-full object-cover opacity-20" />
+          <img src="/images/programmes-bg.png" alt="" className="w-full h-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-b from-green-950/80 to-green-950" />
         </div>
         <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />

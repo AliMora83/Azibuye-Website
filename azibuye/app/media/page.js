@@ -81,7 +81,7 @@ export default function MediaPage() {
               <SectionReveal key={post.slug} delay={i * 0.08}>
                 <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-green-800 hover:shadow-lg transition-all group h-full flex flex-col">
                   <div className="bg-green-800 aspect-video flex items-center justify-center relative overflow-hidden">
-                    <img src={`/images/media-${(i % 2) + 1}.jpg`} alt={post.title}
+                    <img src={`/images/media-${(i % 2) + 1}.png`} alt={post.title}
                       className="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500" />
                     <span className="absolute top-4 left-4 bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                       {post.category}
