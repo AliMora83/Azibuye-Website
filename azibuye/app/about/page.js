@@ -79,7 +79,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <SectionReveal>
             <div className="relative w-full aspect-square bg-[url('/images/box.png')] bg-cover bg-center rounded-3xl p-8 md:p-12 flex flex-col justify-center text-left overflow-hidden shadow-md">
-              <span className="text-gold-400 text-7xl md:text-8xl font-serif leading-none mb-2 block select-none">“</span>
+              <span className="text-gold-400 text-[9rem] md:text-[12rem] font-serif leading-none -mb-12 md:-mb-20 block select-none">“</span>
               <p className="text-white text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
                 Come back,<br />
                 reclaim what<br />
