@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, CheckCircle2, GraduationCap, Laptop, BarChart3, Rocket, Zap } from 'lucide-react'
 import SectionReveal from '@/components/SectionReveal'
 import { motion } from 'framer-motion'
 
@@ -9,31 +9,31 @@ const programmes = [
     title: 'Early Childhood Development',
     tag: 'NQF 4 & 5 · QCTO Accredited',
     opens: 'Become a qualified ECD practitioner and shape the minds of South Africa\'s youngest generation.',
-    icon: '🧒',
+    icon: GraduationCap,
   },
   {
     title: 'NEMISA Digital Skills Programme',
     tag: 'Active 2025–2027',
     opens: 'Build real digital literacy, from social media to coding basics, to compete in the digital economy.',
-    icon: '💻',
+    icon: Laptop,
   },
   {
     title: 'Microsoft 365 Productivity',
     tag: 'Youth & Corporate',
     opens: 'Master the tools every workplace uses — Word, Excel, Teams, Outlook, OneDrive and more.',
-    icon: '📊',
+    icon: BarChart3,
   },
   {
     title: 'New Venture Creation',
     tag: 'Entrepreneurship',
     opens: 'Learn to start and run your own business with practical entrepreneurship skills.',
-    icon: '🚀',
+    icon: Rocket,
   },
   {
     title: 'Data Science & Software Development',
     tag: 'In Accreditation 2025–2026',
     opens: 'Step into the fastest-growing careers of the 21st century.',
-    icon: '⚡',
+    icon: Zap,
   },
 ]
 
@@ -104,7 +104,7 @@ export default function YouthPage() {
             {programmes.map((p, i) => (
               <SectionReveal key={p.title} delay={i * 0.08}>
                 <div className="bg-cream-50 rounded-2xl p-7 border border-gray-100 hover:border-green-800 hover:shadow-lg transition-all h-full group">
-                  <div className="text-4xl mb-4">{p.icon}</div>
+                  <p.icon className="w-10 h-10 text-green-800 mb-4 group-hover:text-gold-500 transition-colors" />
                   <span className="text-xs font-bold text-gold-500 uppercase tracking-wide">{p.tag}</span>
                   <h3 className="font-extrabold text-green-800 text-lg mt-2 mb-3 group-hover:text-gold-600 transition-colors">
                     {p.title}

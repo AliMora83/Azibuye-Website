@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, CheckCircle2, BarChart3, Lightbulb, GraduationCap, Handshake, Settings } from 'lucide-react'
 import SectionReveal from '@/components/SectionReveal'
 import { motion } from 'framer-motion'
 
@@ -8,27 +8,27 @@ const offerings = [
   {
     title: 'Microsoft 365 Workplace Programme',
     delivers: 'Immediately applicable digital productivity skills for your entire team, customisable to your needs.',
-    icon: '📊',
+    icon: BarChart3,
   },
   {
     title: 'Digital Skills Programme (HEMISA)',
     delivers: 'Build digital fluency across your workforce, from foundation to intermediate competency.',
-    icon: '💡',
+    icon: Lightbulb,
   },
   {
     title: 'Capacity Building for Certificate Programmes',
     delivers: 'Equip academic managers and lecturers for successful implementation of QCTO programmes.',
-    icon: '🎓',
+    icon: GraduationCap,
   },
   {
     title: 'B-BBEE Aligned Learnerships',
     delivers: 'SETA-compliant programmes that strengthen your scorecard and genuinely develop your people.',
-    icon: '🤝',
+    icon: Handshake,
   },
   {
     title: 'Bespoke Organisational Training',
     delivers: 'Custom training solutions designed around your specific sector, team, and transformation goals.',
-    icon: '⚙️',
+    icon: Settings,
   },
 ]
 
@@ -109,7 +109,7 @@ export default function CorporatePage() {
             {offerings.map((o, i) => (
               <SectionReveal key={o.title} delay={i * 0.08}>
                 <div className="bg-cream-50 rounded-2xl p-7 border border-gray-100 hover:border-gold-500 hover:shadow-lg transition-all h-full group">
-                  <div className="text-4xl mb-4">{o.icon}</div>
+                  <o.icon className="w-10 h-10 text-green-800 mb-4 group-hover:text-gold-500 transition-colors" />
                   <h3 className="font-extrabold text-green-800 text-base mb-3 group-hover:text-gold-600 transition-colors">
                     {o.title}
                   </h3>

@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
@@ -15,6 +16,7 @@ const navLinks = [
 ]
 
 export default function Navbar() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -40,15 +42,22 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-white text-sm font-semibold tracking-wide hover:text-gold-400 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-semibold tracking-wide hover:text-gold-400 transition-colors ${
+                  isActive
+                    ? 'text-gold-400 underline decoration-2 underline-offset-4'
+                    : 'text-white'
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
           <Link
             href="/contact"
             className="ml-4 bg-gold-500 hover:bg-gold-600 text-white text-sm font-bold px-5 py-2.5 rounded-full transition-colors"
@@ -70,16 +79,23 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {open && (
         <div className="lg:hidden bg-green-900 border-t border-green-700 px-4 py-6 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="text-white font-semibold text-base hover:text-gold-400 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={`font-semibold text-base hover:text-gold-400 transition-colors ${
+                  isActive
+                    ? 'text-gold-400 underline decoration-2 underline-offset-4'
+                    : 'text-white'
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
           <Link
             href="/contact"
             onClick={() => setOpen(false)}

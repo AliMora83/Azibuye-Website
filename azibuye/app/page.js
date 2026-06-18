@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { BookOpen, Monitor, Briefcase, Users, ArrowRight, Star, ChevronDown } from 'lucide-react'
+import { BookOpen, Monitor, Briefcase, Users, User, ArrowRight, Star, ChevronDown } from 'lucide-react'
 import SectionReveal from '@/components/SectionReveal'
 import AnimatedCounter from '@/components/AnimatedCounter'
 
@@ -13,28 +13,6 @@ const stats = [
   { value: 9, suffix: '', label: 'Provinces Reached' },
 ]
 
-const pillars = [
-  {
-    icon: BookOpen,
-    title: 'Training & Development',
-    desc: 'Nationally accredited NQF Level 4 & 5 qualifications recognised across South Africa.',
-  },
-  {
-    icon: Monitor,
-    title: 'Digital Skills',
-    desc: 'From Microsoft 365 to data science — practical, in-demand digital competencies.',
-  },
-  {
-    icon: Briefcase,
-    title: 'Career Support',
-    desc: 'We open doors, build capabilities and create pathways to real opportunities.',
-  },
-  {
-    icon: Users,
-    title: 'Community Impact',
-    desc: 'We measure success by the lives we change and the communities we uplift.',
-  },
-]
 
 const programmes = [
   { title: 'Early Childhood Development', tag: 'NQF 4 & 5', href: '/programmes/youth', color: 'bg-green-800' },
@@ -164,27 +142,100 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── FOUR PILLARS ─── */}
+      {/* ─── TWO PATHWAYS ─── */}
       <section className="bg-cream-50 py-24">
         <div className="max-w-7xl mx-auto px-4">
           <SectionReveal>
-            <p className="text-gold-500 font-bold text-xs tracking-widest uppercase mb-3">What We Do</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-green-800 mb-16 max-w-xl">
-              Two Arms.<br />One Purpose.
-            </h2>
+            <div className="mb-16">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-green-950 tracking-tight uppercase relative pb-4">
+                Two Pathways. One Purpose.
+                <span className="absolute bottom-0 left-0 w-12 h-1 bg-gold-500 rounded-full"></span>
+              </h2>
+            </div>
           </SectionReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pillars.map((p, i) => (
-              <SectionReveal key={p.title} delay={i * 0.1}>
-                <div className="bg-white rounded-2xl p-7 h-full border border-gray-100 hover:border-gold-400 hover:shadow-lg transition-all group">
-                  <div className="w-12 h-12 bg-green-800 rounded-xl flex items-center justify-center mb-5 group-hover:bg-gold-500 transition-colors">
-                    <p.icon className="text-white w-6 h-6" />
-                  </div>
-                  <h3 className="font-bold text-green-800 text-base mb-2">{p.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{p.desc}</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Youth Card */}
+            <SectionReveal delay={0.1}>
+              <div className="relative overflow-hidden rounded-3xl min-h-[460px] flex flex-col justify-between p-8 md:p-10 bg-green-950 group shadow-lg">
+                {/* Background Image with Gradient Overlay */}
+                <div className="absolute inset-0 z-0">
+                  <img
+                    src="/images/youth-class.png"
+                    alt="Youth Pathway"
+                    className="w-full h-full object-cover object-right opacity-90 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-950 via-green-950/90 to-transparent z-10" />
                 </div>
-              </SectionReveal>
-            ))}
+
+                <div className="relative z-20 flex flex-col h-full justify-between gap-12">
+                  <div className="flex flex-col items-start">
+                    {/* Icon */}
+                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6 border border-white/20">
+                      <User className="text-white w-6 h-6" />
+                    </div>
+                    {/* Heading */}
+                    <h3 className="text-white font-extrabold text-2xl md:text-3xl tracking-tight mb-4 uppercase leading-tight">
+                      For Youth &<br />School Leavers
+                    </h3>
+                    {/* Paragraph */}
+                    <p className="text-green-100/80 text-sm md:text-base leading-relaxed max-w-[280px] sm:max-w-[340px]">
+                      Practical, accredited programmes that unlock your potential and open doors to meaningful opportunities.
+                    </p>
+                  </div>
+
+                  {/* Button */}
+                  <Link
+                    href="/programmes/youth"
+                    className="bg-white hover:bg-green-50 text-green-950 font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2 transition-all self-start shadow-md text-sm group/btn"
+                  >
+                    Explore Youth Programmes
+                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
+            </SectionReveal>
+
+            {/* Corporate Card */}
+            <SectionReveal delay={0.2}>
+              <div className="relative overflow-hidden rounded-3xl min-h-[460px] flex flex-col justify-between p-8 md:p-10 bg-[#a87520] group shadow-lg">
+                {/* Background Image with Gradient Overlay */}
+                <div className="absolute inset-0 z-0">
+                  <img
+                    src="/images/corporate-class.png"
+                    alt="Corporate Pathway"
+                    className="w-full h-full object-cover object-right opacity-90 group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#a87520] via-[#a87520]/90 to-transparent z-10" />
+                </div>
+
+                <div className="relative z-20 flex flex-col h-full justify-between gap-12">
+                  <div className="flex flex-col items-start">
+                    {/* Icon */}
+                    <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center mb-6 border border-white/20">
+                      <Briefcase className="text-white w-6 h-6" />
+                    </div>
+                    {/* Heading */}
+                    <h3 className="text-white font-extrabold text-2xl md:text-3xl tracking-tight mb-4 uppercase leading-tight">
+                      For Corporates &<br />Organisations
+                    </h3>
+                    {/* Paragraph */}
+                    <p className="text-amber-50/80 text-sm md:text-base leading-relaxed max-w-[280px] sm:max-w-[340px]">
+                      SETA-aligned training solutions that build capability, drive transformation and strengthen your workforce.
+                    </p>
+                  </div>
+
+                  {/* Button */}
+                  <Link
+                    href="/programmes/corporate"
+                    className="bg-white hover:bg-amber-50 text-amber-950 font-bold px-6 py-3.5 rounded-full inline-flex items-center gap-2 transition-all self-start shadow-md text-sm group/btn"
+                  >
+                    Explore Corporate Solutions
+                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
+            </SectionReveal>
           </div>
         </div>
       </section>

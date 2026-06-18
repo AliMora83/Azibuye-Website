@@ -8,6 +8,9 @@ export const metadata = {
   description:
     'Accredited digital skills, workforce development and employability programmes for youth, school leavers, and corporates across South Africa.',
   keywords: 'digital skills, ETDP SETA, NQF accredited, youth training, corporate training, South Africa, Durban',
+  icons: {
+    icon: '/images/Azibuye%20icon.png',
+  },
   openGraph: {
     title: 'Azibuye eSkills | Skills without Limits',
     description: 'Empowering Communities. Reclaiming Futures.',

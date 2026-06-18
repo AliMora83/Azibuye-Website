@@ -127,7 +127,7 @@ export default function AboutPage() {
           </SectionReveal>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <SectionReveal>
-              <div className="rounded-3xl overflow-hidden bg-gray-100 aspect-[4/5]">
+              <div className="max-w-[60%] mx-auto lg:mx-0 rounded-3xl overflow-hidden bg-gray-100 aspect-[4/5]">
                 <img src="/images/dr-maseru.png" alt="Dr Maseru Mkhwane" className="w-full h-full object-cover" />
               </div>
             </SectionReveal>
