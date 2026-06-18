@@ -60,14 +60,14 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-green-950/80 to-green-950" />
         </div>
         <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
+        <div className="relative z-10 max-w-7xl mx-auto px-12">
           <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Overview</p>
             <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-              The Azibuye<br /><span className="text-gold-400">Story</span>
+              The Azibuye<span className="text-gold-400"> Story</span>
             </h1>
             <p className="text-green-200 text-lg max-w-2xl leading-relaxed">
-              <em>Azibuye</em> comes from a Nguni word that means:{' '}
+              <em>Azibuye</em> comes from a Nguni word that means:{' '}<br />
               <span className="text-gold-400 font-bold">Let them return. Come back. Reclaim what is yours.</span>
             </p>
           </motion.div>
@@ -79,10 +79,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <SectionReveal>
             <div className="relative w-full aspect-square bg-[url('/images/box.png')] bg-cover bg-center rounded-3xl p-8 md:p-12 flex flex-col justify-center text-left overflow-hidden shadow-md">
-              <span className="text-gold-400 text-[9rem] md:text-[12rem] font-serif leading-none -mb-12 md:-mb-20 block select-none">“</span>
-              <p className="text-white text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+              <span className="text-gold-400 text-[9rem] md:text-[12rem] font-serif leading-none -mb-30 block select-none">“</span>
+              <p className="text-white text-3xl md:text-4xl lg:text-5xl font-extrabold leading-12 tracking-tight">
                 Come back,<br />
-                reclaim what<br />
+                <span className="font-light">reclaim what</span><br />
                 is yours.
               </p>
             </div>
