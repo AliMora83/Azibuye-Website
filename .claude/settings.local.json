@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(git fetch *)",
+      "Bash(sips -g pixelWidth -g pixelHeight public/images/logo-brand-white.png)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/about)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/programmes/youth)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/media)",
+      "Bash(cat /tmp/dev.log 2>&1 | tail -30)",
+      "Bash(curl -s -o /dev/null -w \"/ -> %{http_code}\\\\n\" http://localhost:3001/)",
+      "Bash(curl -s -o /dev/null -w \"/about -> %{http_code}\\\\n\" http://localhost:3001/about)",
+      "Bash(curl -s -o /dev/null -w \"/media -> %{http_code}\\\\n\" http://localhost:3001/media)",
+      "Bash(curl -s -o /dev/null -w \"/programmes/youth -> %{http_code}\\\\n\" http://localhost:3001/programmes/youth)",
+      "Bash(curl -s -o /dev/null -w \"/programmes/corporate -> %{http_code}\\\\n\" http://localhost:3001/programmes/corporate)",
+      "Bash(curl -s \"http://localhost:3001/\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:3001/_next/image?url=%2Fimages%2Fhero-bg.png&w=1920&q=75\")",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(npm run dev > /tmp/dev2.log 2>&1 & *)",
+      "Bash(curl -s http://localhost:3000/about)",
+      "Bash(curl -s http://localhost:3000/programmes/youth)",
+      "Bash(curl -s http://localhost:3000/contact)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git status *)",
+      "Bash(npx eslint *)",
+      "Bash(echo \"started with PID $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/contact)",
+      "Bash(kill %1)",
+      "Bash(jobs)"
+    ]
+  }
+}
