@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Globe } from 'lucide-react'
 import { FacebookIcon, LinkedinIcon, YoutubeIcon, InstagramIcon } from '@/components/SocialIcons'
@@ -29,7 +30,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand column */}
         <div className="lg:col-span-1">
-          <img src="/images/logo-brand-white.png" alt="Azibuye eSkills" className="h-[129px] w-auto mb-4" />
+          <Image
+            src="/images/logo-brand-white.png"
+            alt="Azibuye eSkills"
+            width={270}
+            height={129}
+            className="h-[129px] w-auto mb-4"
+          />
           <p className="text-green-200 text-sm leading-relaxed mb-6">
             Empowering Communities.<br />Reclaiming Futures.
           </p>

@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
@@ -58,10 +59,12 @@ export default function Home() {
       <section ref={heroRef} className="relative min-h-screen flex items-center overflow-hidden bg-green-950">
         {/* Parallax background */}
         <motion.div style={{ y: heroY }} className="absolute inset-0 z-0">
-          <img
+          <Image
             src="/images/hero-bg.png"
             alt=""
-            className="w-full h-full object-cover opacity-30"
+            fill
+            priority
+            className="object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-green-950/60 via-green-950/40 to-green-950" />
         </motion.div>
@@ -163,10 +166,11 @@ export default function Home() {
               <div className="relative overflow-hidden rounded-3xl min-h-[460px] flex flex-col justify-between p-8 md:p-10 bg-green-950 group shadow-lg">
                 {/* Background Image with Gradient Overlay */}
                 <div className="absolute inset-0 z-0">
-                  <img
+                  <Image
                     src="/images/youth-class.png"
                     alt="Youth Pathway"
-                    className="w-full h-full object-cover object-right opacity-90 group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover object-right opacity-90 group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-green-950 via-green-950/90 to-transparent z-10" />
                 </div>
@@ -204,10 +208,11 @@ export default function Home() {
               <div className="relative overflow-hidden rounded-3xl min-h-[460px] flex flex-col justify-between p-8 md:p-10 bg-[#a87520] group shadow-lg">
                 {/* Background Image with Gradient Overlay */}
                 <div className="absolute inset-0 z-0">
-                  <img
+                  <Image
                     src="/images/corporate-class.png"
                     alt="Corporate Pathway"
-                    className="w-full h-full object-cover object-right opacity-90 group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover object-right opacity-90 group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-[#a87520] via-[#a87520]/90 to-transparent z-10" />
                 </div>

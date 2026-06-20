@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Globe, Send, CheckCircle2 } from 'lucide-react'
 import SectionReveal from '@/components/SectionReveal'
@@ -54,35 +54,35 @@ function EnrolForm() {
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Full Name *</label>
-          <input required name="name" value={form.name} onChange={handleChange}
+          <label htmlFor="enrol-name" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Full Name *</label>
+          <input id="enrol-name" required name="name" value={form.name} onChange={handleChange}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white"
             placeholder="Your full name" />
         </div>
         <div>
-          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Phone Number *</label>
-          <input required name="phone" value={form.phone} onChange={handleChange}
+          <label htmlFor="enrol-phone" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Phone Number *</label>
+          <input id="enrol-phone" required name="phone" value={form.phone} onChange={handleChange}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white"
             placeholder="e.g. 066 004 6289" />
         </div>
       </div>
       <div>
-        <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Email Address</label>
-        <input name="email" type="email" value={form.email} onChange={handleChange}
+        <label htmlFor="enrol-email" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Email Address</label>
+        <input id="enrol-email" name="email" type="email" value={form.email} onChange={handleChange}
           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white"
           placeholder="your@email.com" />
       </div>
       <div>
-        <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Programme of Interest *</label>
-        <select required name="programme" value={form.programme} onChange={handleChange}
+        <label htmlFor="enrol-programme" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Programme of Interest *</label>
+        <select id="enrol-programme" required name="programme" value={form.programme} onChange={handleChange}
           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white">
           <option value="">Select a programme…</option>
           {programmes.map(p => <option key={p} value={p}>{p}</option>)}
         </select>
       </div>
       <div>
-        <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Message (optional)</label>
-        <textarea name="message" value={form.message} onChange={handleChange} rows={4}
+        <label htmlFor="enrol-message" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Message (optional)</label>
+        <textarea id="enrol-message" name="message" value={form.message} onChange={handleChange} rows={4}
           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white resize-none"
           placeholder="Tell us a bit about yourself or any questions you have…" />
       </div>
@@ -129,43 +129,43 @@ function PartnerForm() {
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Company Name *</label>
-          <input required name="company" value={form.company} onChange={handleChange}
+          <label htmlFor="partner-company" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Company Name *</label>
+          <input id="partner-company" required name="company" value={form.company} onChange={handleChange}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white"
             placeholder="Your company" />
         </div>
         <div>
-          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Contact Person *</label>
-          <input required name="name" value={form.name} onChange={handleChange}
+          <label htmlFor="partner-name" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Contact Person *</label>
+          <input id="partner-name" required name="name" value={form.name} onChange={handleChange}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white"
             placeholder="Full name" />
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Email Address *</label>
-          <input required name="email" type="email" value={form.email} onChange={handleChange}
+          <label htmlFor="partner-email" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Email Address *</label>
+          <input id="partner-email" required name="email" type="email" value={form.email} onChange={handleChange}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white"
             placeholder="work@company.com" />
         </div>
         <div>
-          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Phone Number *</label>
-          <input required name="phone" value={form.phone} onChange={handleChange}
+          <label htmlFor="partner-phone" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Phone Number *</label>
+          <input id="partner-phone" required name="phone" value={form.phone} onChange={handleChange}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white"
             placeholder="e.g. 031 000 0000" />
         </div>
       </div>
       <div>
-        <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Number of Employees to Train *</label>
-        <select required name="size" value={form.size} onChange={handleChange}
+        <label htmlFor="partner-size" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Number of Employees to Train *</label>
+        <select id="partner-size" required name="size" value={form.size} onChange={handleChange}
           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white">
           <option value="">Select range…</option>
           {['1–10', '11–25', '26–50', '51–100', '100+'].map(s => <option key={s} value={s}>{s}</option>)}
         </select>
       </div>
       <div>
-        <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Training Needs / Goals *</label>
-        <textarea required name="needs" value={form.needs} onChange={handleChange} rows={4}
+        <label htmlFor="partner-needs" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Training Needs / Goals *</label>
+        <textarea id="partner-needs" required name="needs" value={form.needs} onChange={handleChange} rows={4}
           className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white resize-none"
           placeholder="Describe what your team needs to learn or achieve…" />
       </div>
@@ -182,6 +182,13 @@ function PartnerForm() {
 
 export default function ContactPage() {
   const [activeTab, setActiveTab] = useState('enrol')
+
+  useEffect(() => {
+    if (window.location.hash === '#partner') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing initial tab with the URL hash, an external source React can't read during render
+      setActiveTab('partner')
+    }
+  }, [])
 
   return (
     <>
