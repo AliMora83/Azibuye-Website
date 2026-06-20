@@ -38,12 +38,10 @@ Site builds clean (`npm run build`) and lints clean (`npm run lint`). All
 
 ## Known issues / cleanup needed
 
-- **Stray `azibuye/` directory at repo root.** Contains an old pre-restructure
-  copy of `app/about/page.js` (pre-`next/image`, plain `<img>` tags) and an
-  `.env.local.example`. It was committed directly (not via this session) in
-  commit `8c94575 ("Update")`. Looks like an accidental artifact from before
-  the move-to-root restructure — needs a decision from the team on whether
-  to delete it.
+- ~~Stray `azibuye/` directory at repo root~~ — **resolved 2026-06-20**
+  (commit `6527111`). It held an old pre-restructure copy of
+  `app/about/page.js` (pre-`next/image`, plain `<img>` tags) and a
+  duplicate `.env.local.example`; both were deleted.
 - `.claude/settings.local.json` is now tracked in git (added in `8c94575`).
   Worth confirming that's intentional before it picks up local-only settings.
 - EmailJS credentials live in `.env.local` (gitignored) — confirm the real
