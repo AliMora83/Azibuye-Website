@@ -2,9 +2,9 @@
 import Image from 'next/image'
 import SectionReveal from '@/components/SectionReveal'
 import AnimatedCounter from '@/components/AnimatedCounter'
+import PageHero from '@/components/PageHero'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
-import { motion } from 'framer-motion'
 
 const values = [
   {
@@ -55,25 +55,16 @@ export default function AboutPage() {
   return (
     <>
       {/* PAGE HERO */}
-      <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/about-bg.png" alt="" fill priority className="object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-green-950/80 to-green-950" />
-        </div>
-        <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
-        <div className="relative z-10 max-w-7xl mx-auto px-12">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Overview</p>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-              The Azibuye<span className="text-gold-400"> Story</span>
-            </h1>
-            <p className="text-green-200 text-lg max-w-2xl leading-relaxed">
-              <em>Azibuye</em> comes from a Nguni word that means:{' '}<br />
-              <span className="text-gold-400 font-bold">Let them return. Come back. Reclaim what is yours.</span>
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero bgImage="/images/about-bg.png" containerClassName="px-12">
+        <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Overview</p>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+          The Azibuye<span className="text-gold-400"> Story</span>
+        </h1>
+        <p className="text-green-200 text-lg max-w-2xl leading-relaxed">
+          <em>Azibuye</em> comes from a Nguni word that means:{' '}<br />
+          <span className="text-gold-400 font-bold">Let them return. Come back. Reclaim what is yours.</span>
+        </p>
+      </PageHero>
 
       {/* STORY SECTION */}
       <section className="bg-cream-50 py-24">

@@ -1,32 +1,22 @@
 'use client'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, BookOpen, Monitor } from 'lucide-react'
 import SectionReveal from '@/components/SectionReveal'
-import { motion } from 'framer-motion'
+import PageHero from '@/components/PageHero'
 
 export default function ProgrammesPage() {
   return (
     <>
-      <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/programmes-bg.png" alt="" fill priority className="object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-green-950/80 to-green-950" />
-        </div>
-        <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Our Programmes</p>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-              Practical Skills.<br /><span className="text-gold-400">Real Impact.</span>
-            </h1>
-            <p className="text-green-200 text-lg max-w-2xl leading-relaxed">
-              Our programmes are designed to equip you with relevant, in-demand skills that open
-              doors to employment, entrepreneurship and lifelong growth.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero bgImage="/images/programmes-bg.png">
+        <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Our Programmes</p>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+          Practical Skills.<br /><span className="text-gold-400">Real Impact.</span>
+        </h1>
+        <p className="text-green-200 text-lg max-w-2xl leading-relaxed">
+          Our programmes are designed to equip you with relevant, in-demand skills that open
+          doors to employment, entrepreneurship and lifelong growth.
+        </p>
+      </PageHero>
 
       <section className="bg-cream-50 py-24">
         <div className="max-w-7xl mx-auto px-4">

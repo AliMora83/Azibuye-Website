@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2, GraduationCap, Laptop, BarChart3, Rocket, Zap } from 'lucide-react'
 import SectionReveal from '@/components/SectionReveal'
-import { motion } from 'framer-motion'
+import PageHero from '@/components/PageHero'
 
 const programmes = [
   {
@@ -41,30 +41,21 @@ const programmes = [
 export default function YouthPage() {
   return (
     <>
-      <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/youth-bg.png" alt="" fill priority className="object-cover opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-b from-green-950/70 to-green-950" />
-        </div>
-        <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-block bg-green-800 text-gold-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 tracking-widest uppercase">
-              Pillar One — For Youth
-            </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-              Because Potential<br /><span className="text-gold-400">Doesn't Expire.</span>
-            </h1>
-            <p className="text-green-200 text-lg max-w-2xl leading-relaxed mb-8">
-              If you have just finished school, been job-hunting for months with nothing to show for it,
-              or you have potential the world simply hasn't had the chance to see yet — this is for you.
-            </p>
-            <Link href="/contact#enrol" className="bg-gold-500 hover:bg-gold-600 text-white font-bold px-8 py-4 rounded-full inline-flex items-center gap-2 transition-all hover:scale-105">
-              Enrol Now <ArrowRight size={18} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero bgImage="/images/youth-bg.png" bgOpacity="opacity-25" gradientFrom="from-green-950/70">
+        <span className="inline-block bg-green-800 text-gold-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 tracking-widest uppercase">
+          Pillar One — For Youth
+        </span>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+          Because Potential<br /><span className="text-gold-400">Doesn't Expire.</span>
+        </h1>
+        <p className="text-green-200 text-lg max-w-2xl leading-relaxed mb-8">
+          If you have just finished school, been job-hunting for months with nothing to show for it,
+          or you have potential the world simply hasn't had the chance to see yet — this is for you.
+        </p>
+        <Link href="/contact#enrol" className="bg-gold-500 hover:bg-gold-600 text-white font-bold px-8 py-4 rounded-full inline-flex items-center gap-2 transition-all hover:scale-105">
+          Enrol Now <ArrowRight size={18} />
+        </Link>
+      </PageHero>
 
       {/* WHY */}
       <section className="bg-cream-50 py-24">

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2, BarChart3, Lightbulb, GraduationCap, Handshake, Settings } from 'lucide-react'
 import SectionReveal from '@/components/SectionReveal'
-import { motion } from 'framer-motion'
+import PageHero from '@/components/PageHero'
 
 const offerings = [
   {
@@ -43,30 +43,21 @@ const reasons = [
 export default function CorporatePage() {
   return (
     <>
-      <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/corporate-bg.png" alt="" fill priority className="object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-green-950/80 to-green-950" />
-        </div>
-        <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-block bg-gold-500/20 border border-gold-500/40 text-gold-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 tracking-widest uppercase">
-              Pillar Two — For Corporates
-            </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-              Build the Workforce<br /><span className="text-gold-400">Your Business Deserves.</span>
-            </h1>
-            <p className="text-green-200 text-lg max-w-2xl leading-relaxed mb-8">
-              Your people are your greatest competitive advantage — but only if they have the skills,
-              the confidence, and the credentials to perform at the level your organisation needs.
-            </p>
-            <Link href="/contact#partner" className="bg-gold-500 hover:bg-gold-600 text-white font-bold px-8 py-4 rounded-full inline-flex items-center gap-2 transition-all hover:scale-105">
-              Request a Proposal <ArrowRight size={18} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero bgImage="/images/corporate-bg.png">
+        <span className="inline-block bg-gold-500/20 border border-gold-500/40 text-gold-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 tracking-widest uppercase">
+          Pillar Two — For Corporates
+        </span>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+          Build the Workforce<br /><span className="text-gold-400">Your Business Deserves.</span>
+        </h1>
+        <p className="text-green-200 text-lg max-w-2xl leading-relaxed mb-8">
+          Your people are your greatest competitive advantage — but only if they have the skills,
+          the confidence, and the credentials to perform at the level your organisation needs.
+        </p>
+        <Link href="/contact#partner" className="bg-gold-500 hover:bg-gold-600 text-white font-bold px-8 py-4 rounded-full inline-flex items-center gap-2 transition-all hover:scale-105">
+          Request a Proposal <ArrowRight size={18} />
+        </Link>
+      </PageHero>
 
       {/* THE CASE */}
       <section className="bg-cream-50 py-24">

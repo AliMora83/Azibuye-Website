@@ -1,7 +1,7 @@
 'use client'
 import SectionReveal from '@/components/SectionReveal'
 import AnimatedCounter from '@/components/AnimatedCounter'
-import { motion } from 'framer-motion'
+import PageHero from '@/components/PageHero'
 
 const stats = [
   { value: 1000, suffix: '+', label: 'Learners Trained', desc: 'Real people with real qualifications.' },
@@ -47,20 +47,15 @@ const accreditations = [
 export default function ImpactPage() {
   return (
     <>
-      <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Our Impact</p>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-              Creating Opportunity<br /><span className="text-gold-400">Through Skills</span>
-            </h1>
-            <p className="text-green-200 text-lg max-w-2xl">
-              We measure success by the lives we change and the communities we uplift.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero>
+        <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Our Impact</p>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+          Creating Opportunity<br /><span className="text-gold-400">Through Skills</span>
+        </h1>
+        <p className="text-green-200 text-lg max-w-2xl">
+          We measure success by the lives we change and the communities we uplift.
+        </p>
+      </PageHero>
 
       {/* STATS */}
       <section className="bg-green-800 py-20">

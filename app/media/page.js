@@ -1,9 +1,8 @@
 'use client'
 import Image from 'next/image'
 import SectionReveal from '@/components/SectionReveal'
-import Link from 'next/link'
+import PageHero from '@/components/PageHero'
 import { ArrowRight, Calendar } from 'lucide-react'
-import { motion } from 'framer-motion'
 
 // Placeholder posts — replace with Sanity CMS data when integrated
 const posts = [
@@ -42,20 +41,15 @@ const categories = ['All', 'News', 'Programmes', 'Leadership', 'Insight']
 export default function MediaPage() {
   return (
     <>
-      <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Media & News</p>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-              Stories of<br /><span className="text-gold-400">Impact</span>
-            </h1>
-            <p className="text-green-200 text-lg max-w-xl">
-              News, updates, insights and success stories from Azibuye Digital Technologies.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero>
+        <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Media & News</p>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+          Stories of<br /><span className="text-gold-400">Impact</span>
+        </h1>
+        <p className="text-green-200 text-lg max-w-xl">
+          News, updates, insights and success stories from Azibuye Digital Technologies.
+        </p>
+      </PageHero>
 
       <section className="bg-cream-50 py-24">
         <div className="max-w-7xl mx-auto px-4">

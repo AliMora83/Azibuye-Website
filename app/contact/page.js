@@ -1,8 +1,8 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Globe, Send, CheckCircle2 } from 'lucide-react'
 import SectionReveal from '@/components/SectionReveal'
+import PageHero from '@/components/PageHero'
 import emailjs from '@emailjs/browser'
 
 // ─── Replace these with your real EmailJS credentials ───
@@ -22,70 +22,92 @@ const programmes = [
   'Other / Not Sure Yet',
 ]
 
-function EnrolForm() {
+const employeeRanges = ['1–10', '11–25', '26–50', '51–100', '100+']
+
+const FIELD_CLASS = 'w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white'
+const LABEL_CLASS = 'block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5'
+
+function FormField({ id, label, ...inputProps }) {
+  return (
+    <div>
+      <label htmlFor={id} className={LABEL_CLASS}>{label}</label>
+      <input id={id} className={FIELD_CLASS} {...inputProps} />
+    </div>
+  )
+}
+
+function FormSelect({ id, label, options, placeholder, ...selectProps }) {
+  return (
+    <div>
+      <label htmlFor={id} className={LABEL_CLASS}>{label}</label>
+      <select id={id} className={FIELD_CLASS} {...selectProps}>
+        <option value="">{placeholder}</option>
+        {options.map((o) => <option key={o} value={o}>{o}</option>)}
+      </select>
+    </div>
+  )
+}
+
+function FormTextarea({ id, label, ...textareaProps }) {
+  return (
+    <div>
+      <label htmlFor={id} className={LABEL_CLASS}>{label}</label>
+      <textarea id={id} className={`${FIELD_CLASS} resize-none`} {...textareaProps} />
+    </div>
+  )
+}
+
+function FormSuccess({ title, body }) {
+  return (
+    <div className="flex flex-col items-center justify-center py-16 text-center">
+      <CheckCircle2 size={52} className="text-gold-500 mb-4" />
+      <h3 className="text-green-800 font-extrabold text-2xl mb-2">{title}</h3>
+      <p className="text-gray-500">{body}</p>
+    </div>
+  )
+}
+
+function useEmailForm(templateId, initialValues) {
   const formRef = useRef(null)
   const [status, setStatus] = useState('idle') // idle | sending | success | error
-  const [form, setForm] = useState({ name: '', email: '', phone: '', programme: '', message: '' })
+  const [form, setForm] = useState(initialValues)
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+  const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
     try {
-      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_ENROL_TID, formRef.current, EMAILJS_PUBLIC_KEY)
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, templateId, formRef.current, EMAILJS_PUBLIC_KEY)
       setStatus('success')
     } catch {
       setStatus('error')
     }
   }
 
+  return { formRef, status, form, handleChange, handleSubmit }
+}
+
+function EnrolForm() {
+  const { formRef, status, form, handleChange, handleSubmit } = useEmailForm(EMAILJS_ENROL_TID, {
+    name: '', email: '', phone: '', programme: '', message: '',
+  })
+
   if (status === 'success') {
-    return (
-      <div className="flex flex-col items-center justify-center py-16 text-center">
-        <CheckCircle2 size={52} className="text-gold-500 mb-4" />
-        <h3 className="text-green-800 font-extrabold text-2xl mb-2">Application Received!</h3>
-        <p className="text-gray-500">Our team will be in touch within 24 hours.</p>
-      </div>
-    )
+    return <FormSuccess title="Application Received!" body="Our team will be in touch within 24 hours." />
   }
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="enrol-name" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Full Name *</label>
-          <input id="enrol-name" required name="name" value={form.name} onChange={handleChange}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white"
-            placeholder="Your full name" />
-        </div>
-        <div>
-          <label htmlFor="enrol-phone" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Phone Number *</label>
-          <input id="enrol-phone" required name="phone" value={form.phone} onChange={handleChange}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white"
-            placeholder="e.g. 066 004 6289" />
-        </div>
+        <FormField id="enrol-name" label="Full Name *" required name="name" value={form.name} onChange={handleChange} placeholder="Your full name" />
+        <FormField id="enrol-phone" label="Phone Number *" required name="phone" value={form.phone} onChange={handleChange} placeholder="e.g. 066 004 6289" />
       </div>
-      <div>
-        <label htmlFor="enrol-email" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Email Address</label>
-        <input id="enrol-email" name="email" type="email" value={form.email} onChange={handleChange}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white"
-          placeholder="your@email.com" />
-      </div>
-      <div>
-        <label htmlFor="enrol-programme" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Programme of Interest *</label>
-        <select id="enrol-programme" required name="programme" value={form.programme} onChange={handleChange}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white">
-          <option value="">Select a programme…</option>
-          {programmes.map(p => <option key={p} value={p}>{p}</option>)}
-        </select>
-      </div>
-      <div>
-        <label htmlFor="enrol-message" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Message (optional)</label>
-        <textarea id="enrol-message" name="message" value={form.message} onChange={handleChange} rows={4}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 transition-colors bg-white resize-none"
-          placeholder="Tell us a bit about yourself or any questions you have…" />
-      </div>
+      <FormField id="enrol-email" label="Email Address" name="email" type="email" value={form.email} onChange={handleChange} placeholder="your@email.com" />
+      <FormSelect id="enrol-programme" label="Programme of Interest *" required name="programme" value={form.programme}
+        onChange={handleChange} options={programmes} placeholder="Select a programme…" />
+      <FormTextarea id="enrol-message" label="Message (optional)" name="message" value={form.message} onChange={handleChange}
+        rows={4} placeholder="Tell us a bit about yourself or any questions you have…" />
       <button type="submit" disabled={status === 'sending'}
         className="w-full bg-gold-500 hover:bg-gold-600 disabled:opacity-60 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all">
         {status === 'sending' ? 'Sending…' : <><Send size={16} /> Submit Application</>}
@@ -98,77 +120,28 @@ function EnrolForm() {
 }
 
 function PartnerForm() {
-  const formRef = useRef(null)
-  const [status, setStatus] = useState('idle')
-  const [form, setForm] = useState({ company: '', name: '', email: '', phone: '', size: '', needs: '' })
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setStatus('sending')
-    try {
-      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_PARTNER_TID, formRef.current, EMAILJS_PUBLIC_KEY)
-      setStatus('success')
-    } catch {
-      setStatus('error')
-    }
-  }
+  const { formRef, status, form, handleChange, handleSubmit } = useEmailForm(EMAILJS_PARTNER_TID, {
+    company: '', name: '', email: '', phone: '', size: '', needs: '',
+  })
 
   if (status === 'success') {
-    return (
-      <div className="flex flex-col items-center justify-center py-16 text-center">
-        <CheckCircle2 size={52} className="text-gold-500 mb-4" />
-        <h3 className="text-green-800 font-extrabold text-2xl mb-2">Proposal Request Received!</h3>
-        <p className="text-gray-500">We'll send a tailored proposal within 48 hours.</p>
-      </div>
-    )
+    return <FormSuccess title="Proposal Request Received!" body="We'll send a tailored proposal within 48 hours." />
   }
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="partner-company" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Company Name *</label>
-          <input id="partner-company" required name="company" value={form.company} onChange={handleChange}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white"
-            placeholder="Your company" />
-        </div>
-        <div>
-          <label htmlFor="partner-name" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Contact Person *</label>
-          <input id="partner-name" required name="name" value={form.name} onChange={handleChange}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white"
-            placeholder="Full name" />
-        </div>
+        <FormField id="partner-company" label="Company Name *" required name="company" value={form.company} onChange={handleChange} placeholder="Your company" />
+        <FormField id="partner-name" label="Contact Person *" required name="name" value={form.name} onChange={handleChange} placeholder="Full name" />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="partner-email" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Email Address *</label>
-          <input id="partner-email" required name="email" type="email" value={form.email} onChange={handleChange}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white"
-            placeholder="work@company.com" />
-        </div>
-        <div>
-          <label htmlFor="partner-phone" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Phone Number *</label>
-          <input id="partner-phone" required name="phone" value={form.phone} onChange={handleChange}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white"
-            placeholder="e.g. 031 000 0000" />
-        </div>
+        <FormField id="partner-email" label="Email Address *" required name="email" type="email" value={form.email} onChange={handleChange} placeholder="work@company.com" />
+        <FormField id="partner-phone" label="Phone Number *" required name="phone" value={form.phone} onChange={handleChange} placeholder="e.g. 031 000 0000" />
       </div>
-      <div>
-        <label htmlFor="partner-size" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Number of Employees to Train *</label>
-        <select id="partner-size" required name="size" value={form.size} onChange={handleChange}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white">
-          <option value="">Select range…</option>
-          {['1–10', '11–25', '26–50', '51–100', '100+'].map(s => <option key={s} value={s}>{s}</option>)}
-        </select>
-      </div>
-      <div>
-        <label htmlFor="partner-needs" className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-1.5">Training Needs / Goals *</label>
-        <textarea id="partner-needs" required name="needs" value={form.needs} onChange={handleChange} rows={4}
-          className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-green-800 bg-white resize-none"
-          placeholder="Describe what your team needs to learn or achieve…" />
-      </div>
+      <FormSelect id="partner-size" label="Number of Employees to Train *" required name="size" value={form.size}
+        onChange={handleChange} options={employeeRanges} placeholder="Select range…" />
+      <FormTextarea id="partner-needs" label="Training Needs / Goals *" required name="needs" value={form.needs} onChange={handleChange}
+        rows={4} placeholder="Describe what your team needs to learn or achieve…" />
       <button type="submit" disabled={status === 'sending'}
         className="w-full bg-green-800 hover:bg-green-900 disabled:opacity-60 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all">
         {status === 'sending' ? 'Sending…' : <><Send size={16} /> Request a Proposal</>}
@@ -192,17 +165,12 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="relative bg-green-950 pt-36 pb-24 overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 zulu-border opacity-30" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Get In Touch</p>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-              Let's Build Something<br /><span className="text-gold-400">That Lasts.</span>
-            </h1>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero>
+        <p className="text-gold-400 font-bold text-xs tracking-widest uppercase mb-4">Get In Touch</p>
+        <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+          Let's Build Something<br /><span className="text-gold-400">That Lasts.</span>
+        </h1>
+      </PageHero>
 
       <section className="bg-cream-50 py-24">
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
